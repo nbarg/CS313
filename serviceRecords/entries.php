@@ -5,7 +5,7 @@
  */
 
 require_once 'database.php';
-$db = getDB();
+$db = loadDB();
 
 $car = filter_input(INPUT_POST, 'vehicle_id', FILTER_VALIDATE_INT);
 

@@ -5,7 +5,7 @@
  */
 // get database connection
 require_once 'database.php';
-$db = getDB();
+$db = loadDB();
 
 $user = filter_input(INPUT_POST, "user");
 $password  = filter_input(INPUT_POST, "password");
