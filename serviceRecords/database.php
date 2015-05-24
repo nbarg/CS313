@@ -1,23 +1,38 @@
 <?php
 
-/* 
- * this will create a connection to the database
- */
+function loadDatabase()
+{
 
-function getDB() {
-    $server = 'localhost';
-    $database = 'car_service';
-    $username = 'natebarg_iClient';
-    $password = 'THxDey&2kuK^';
+  $dbHost = "";
+  $dbPort = "";
+  $dbUser = "";
+  $dbPassword = "";
 
-    $dsn = 'mysql:host=' . $server . ';dbname=' . $database;
-    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+     $dbName = "car_service";
 
-    try {
-        $db = new PDO($dsn, $username, $password, $options);
-        return $db;
-    } catch (PDOException $ex) {
-        echo 'it didnt work';
-    }
+     $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
+
+     if ($openShiftVar === null || $openShiftVar == "")
+     {
+          // Not in the openshift environment
+          //echo "Using local credentials: "; 
+          require("database2.php");
+     }
+     else 
+     { 
+          // In the openshift environment
+          //echo "Using openshift credentials: ";
+
+          $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+          $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT'); 
+          $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+          $dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+     } 
+     //echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
+
+     $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+
+     return $db;
+
 }
 
