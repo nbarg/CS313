@@ -24,6 +24,8 @@
             <input type="password" name="password"><br/>
             <input type="submit" value="Login">
         </form>
+            <p>You can log in using the username of nate or cassy(lower case). 
+                The username and password are the same</p>
         </div>
     </body>
 
