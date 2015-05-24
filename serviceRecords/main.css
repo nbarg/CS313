@@ -1,0 +1,51 @@
+body {
+    text-align: center;
+}
+
+table{
+    position: relative;
+    left: 25%;
+    border: black;
+    width: 50%;
+}
+
+th {
+    border: solid black;
+    padding: .2em .5em .2em .5em;
+    vertical-align: top;
+    text-align: left;
+}
+
+td {
+    border-width: thin thin;
+    padding: .2em .5em .2em .5em;
+    vertical-align: top;
+    text-align: left;
+}
+
+#error {
+    color: red;
+}
+
+#login {
+    text-align: left;
+}
+
+#loginBox {
+    width: 20%;
+    position: relative;
+    left: 40%;
+    
+}
+
+#login label {
+    width: 6em;
+    padding-right: 1em;
+    padding-bottom: .5em;
+    float: left;
+
+
+#login input[text] {
+    width: 15em;
+}
+
