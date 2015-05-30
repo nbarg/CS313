@@ -16,7 +16,7 @@ function loadDB()
      {
           // Not in the openshift environment
           //echo "Using local credentials: "; 
-          require("database2.php");
+          require_once("database2.php");
           
           $db = getDB();
      }

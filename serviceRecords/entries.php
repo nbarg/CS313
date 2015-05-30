@@ -35,7 +35,7 @@ $statement3->closeCursor();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Vehicle Selection</title>
+        <title>Entries</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
@@ -53,6 +53,27 @@ $statement3->closeCursor();
         </form>
         
         <h1><?php echo $vehicle1['make'] . $vehicle1['model']; ?></h1>
+        
+        <h3>Add New Entry</h3>
+        
+        <form action="insertEntry.php" method="post" id="insertEntry">
+            <label>Description</label>
+            <select name="description">
+                <option value="Oil change">Oil Change</option>
+                <option value="Tire rotation">Tire rotation</option>
+                <option value="Breaks">Breaks</option>
+                <option value="Coolant">Coolant</option>
+                <option value="Heat and air">Heat and air</option>
+                <option value="Other">other</option>
+            </select>
+            <label>Notes</label>
+            <textarea name="notes" id="notes" rows="4" cols="50"></textarea>
+            <input type="hidden" name="vehicle_id" value="<?php echo $car; ?>">
+            <input type="hidden" name="user_id" value="<?php echo $vehicle1['user_id']; ?>">
+            <input type="hidden" name="service_date" value="<?php echo date('Y-m-d'); ?>">
+            <input type="submit" value="Add"><br/><br/>
+            
+        </form>
         
         <table id='entries'>
             <tr>

@@ -7,39 +7,12 @@
 require_once 'database.php';
 $db = loadDB();
 
-$user = filter_input(INPUT_POST, "user");
-$password  = filter_input(INPUT_POST, "password");
-
-if ($user == NULL || $user == false || $password == NULL || $password == FALSE){
-    $error = 'Must enter both username and password.';
-    include 'index.php';
-    exit();
-}
-
-// query database
-$query = "SELECT * FROM user 
-          WHERE user_name = :user
-          AND password = :password";
-$statement = $db->prepare($query);
-$statement->bindValue(':user', $user);
-$statement->bindValue(':password', $password);
-$statement->execute();
-$response = $statement->fetch();
-$statement->closeCursor();
-
-// validate user
-if ($response){
-    $_SESSION["userID"] = $response['user_id'];
-}else {
-     $error = 'Not a valid username or password.';
-    include 'index.php';
-    exit();
-}
+//session_start();
 
 // get list of cars for user
 $vehicleQuery = "SELECT * FROM vehicle WHERE user_id = :user_id";
 $statement1 = $db->prepare($vehicleQuery);
-$statement1->bindValue(':user_id', $response['user_id']);
+$statement1->bindValue(':user_id', $_SESSION["userID"]);
 $statement1->execute();
 $vehicles = $statement1->fetchAll();
 $statement1->closeCursor();
@@ -63,6 +36,21 @@ $statement1->closeCursor();
             </select>
             
             <input type="submit" value="Search">
+        </form>
+        
+        <h1>Add New Vehicle</h1>
+        
+        <form action="insertVehicle.php" method="post" id="insertVehicle">
+            <?php if (!empty($error)){
+            echo "<p id='error'>" . $error . "</p>";
+            }?>
+            <label>Make</label>
+            <input type="text" id="make" name="make">
+            <label>Model</label>
+            <input type="text" id="model" name="model">
+            
+            <input type="hidden" name="user_id" value="<?php echo $_SESSION["userID"] ?>">
+            <input type="submit" value="Add">
         </form>
     </body>
 </html>

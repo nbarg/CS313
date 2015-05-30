@@ -25,8 +25,16 @@ td {
 
 #error {
     color: red;
+    text-align: center;
 }
 
+#suscess {
+    color: green;
+    text-align: center;
+}
+
+
+/*
 #login {
     text-align: left;
 }
@@ -36,6 +44,17 @@ td {
     position: relative;
     left: 40%;
     
+}
+
+#registerSBox {
+    width: 25%;
+    position: relative;
+    left: 40%;
+    
+}
+
+#registerSBox input {
+    padding-left: 20em;
 }
 
 #login label {
@@ -49,3 +68,39 @@ td {
     width: 15em;
 }
 
+form{
+	background-color: #e2e2e2;
+	text-align:left;
+	position:relative;
+	left:37.5%;
+	width:40%;
+	border: 1px solid #999;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+}
+
+input{
+	text-align:center;
+	width:75%;
+	border: 1px solid #999;
+	height: 25px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
+        position: relative;
+        //: 300px;
+}
+
+button {
+	width:37.5%;
+	border: 1px solid #999;
+	height: 25px;
+	margin-bottom:5px;
+	margin-top:5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+        text-align: center;
+}*/
